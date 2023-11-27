@@ -2,8 +2,8 @@ import {Restaurant} from './../restaurant/component';
 
 export const Restaurants = ({restaurants}) => {
     return (
-    <ul>
+    <div>
         {restaurants.map((restaurant) =>
             <Restaurant restaurant= {restaurant} />)}
-    </ul>);
+    </div>);
 }

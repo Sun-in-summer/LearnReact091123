@@ -1,4 +1,4 @@
-import {RestaurantName} from './../restaurantName/component';
+import {RestaurantName} from '../restaurant-name/component';
 
 export const RestaurantNames = ({restaurantNames, onRestaurantNameSelect}) => {
     return (<div>
