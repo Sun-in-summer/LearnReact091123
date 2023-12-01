@@ -1,5 +1,11 @@
+import {DishCounter} from "../dish-counter/component";
 export const Dish = ({dish}) => {
      return (
-       <div>{dish}</div>
+      <div>
+         <div>{dish}</div>
+        <div><DishCounter /></div>
+      </div>
+      
+
     );
 }
