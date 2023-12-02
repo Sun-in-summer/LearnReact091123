@@ -36,13 +36,13 @@ export const DishCounter =() => {
    
    return (
         <div>
-            <button onClick={()=> decreaseCount()}>-</button>
+            <button onClick={()=> decreaseCount() } disabled ={count <= MIN_COUNT}>-</button>
             <input 
                 value = {count}
                 onChange = {(e)=> handleCount(e.target.value)}>
                
             </input>
-            <button  onClick={()=>increaseCount()}>+</button>
+            <button  onClick={()=>increaseCount() } disabled = {count >= MAX_COUNT}>+</button>
         </div>
     )
 }
