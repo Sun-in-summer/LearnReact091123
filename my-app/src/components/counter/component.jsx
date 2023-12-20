@@ -5,7 +5,7 @@ const MAX_COUNT = 5;
 const DEFAULT_COUNT = 0;
 
 
-export const DishCounter =() => {
+export const Counter =() => {
 
    const [count, setCount] =useState(DEFAULT_COUNT);
    

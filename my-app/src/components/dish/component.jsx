@@ -1,9 +1,9 @@
-import {DishCounter} from "../dish-counter/component";
+import {Counter} from "../counter/component";
 export const Dish = ({dish}) => {
      return (
       <div>
          <div>{dish}</div>
-        <div><DishCounter /></div>
+        <div><Counter /></div>
       </div>
       
 
