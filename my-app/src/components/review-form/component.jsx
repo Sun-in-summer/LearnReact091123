@@ -1,4 +1,10 @@
 import { useReducer } from 'react';
+import { Counter } from '../counter/component';
+
+const MIN_RATING = 1;
+const MAX_RATING = 5;
+const RATING_STEP = 0.5;
+
 
 const DEFAULT_FORM_VALUE = {
     name: '',
@@ -7,10 +13,12 @@ const DEFAULT_FORM_VALUE = {
 }
 
 
+
 const ACTION_TYPES  ={
     setName: 'SET_NAME',
     setText: 'SET_TEXT',
-    setRating: 'SET_RATING'
+    increaseRating: 'INCREASE_RATING',
+    decreaseRating: 'DECREASE_RATING'
 }
 
 export const ReviewForm = () => {
@@ -26,7 +34,8 @@ export const ReviewForm = () => {
                 }  
             case 'SET_TEXT' :
               return {...state, text: action.payload}  
-            case 'SET_RATING' :
+            case 'INCREASE_RATING' :
+            case 'DECREASE_RATING' :
               return {...state, rating: action.payload} ; 
             default:
                  return state;
@@ -59,12 +68,13 @@ export const ReviewForm = () => {
         </div>
         <div>
             <label htmlFor = 'rating'>Rating</label>
-            <input
-             id ="rating" 
-             type= 'number'
-             value ={formValue.rating}
-             onChange = {(event) => dispatch({ type: ACTION_TYPES.setRating, payload: event.target.value})}></input>
-        </div>
+            <Counter
+               value = {formValue.rating} 
+               increment = {() =>dispatch({ type: ACTION_TYPES.increaseRating, payload: formValue.rating + RATING_STEP})}
+               decrement = {() =>{ dispatch({ type: ACTION_TYPES.decreaseRating, payload: formValue.rating - RATING_STEP}); console.log(formValue.rating)}}
+               min = {MIN_RATING}
+               max= {MAX_RATING} />
+          </div>
       </div>
 
     );
