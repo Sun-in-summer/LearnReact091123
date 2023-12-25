@@ -1,4 +1,5 @@
 import { Review } from '../review/component';
+import styles from './styles.module.css'
 
 export const Reviews = ({reviews}) => {
     return (
@@ -6,7 +7,10 @@ export const Reviews = ({reviews}) => {
       <div>
         <h3>Отзывы</h3>
         <ul>
-            {reviews.map ((review) => <li><Review review= {review}/></li>)}
+            {reviews.map ((review) => 
+              <Review review= {review} className = {styles.review}/>
+             )
+              }
         </ul>
         
       </div>

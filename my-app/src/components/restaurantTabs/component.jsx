@@ -1,9 +1,9 @@
-import {RestaurantName} from '../restaurant-name/component';
+import {Tab} from '../tab/component';
 
-export const RestaurantNames = ({restaurantNames, onRestaurantNameSelect}) => {
+export const RestaurantTabs = ({restaurantNames, onRestaurantNameSelect}) => {
     return (<div>
         {restaurantNames.map((restraurantName) =>
-             <RestaurantName
+             <Tab
                 name= {restraurantName} 
                 onClick={() => onRestaurantNameSelect(restraurantName)}
             />)}

@@ -1,4 +1,5 @@
 import { Menu  } from '../menu/component';
+import { OrderFormGroup } from '../order-form-group/component';
 import { ReviewForm } from '../review-form/component';
 import { Reviews } from '../reviews/component';
 
@@ -15,6 +16,7 @@ export const Restaurant = ({restaurant}) => {
       
       <Reviews reviews ={restaurant.reviews} />
       <ReviewForm/>
+      <OrderFormGroup />
     </div>
     );
 }
