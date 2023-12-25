@@ -1,6 +1,7 @@
-export const Review = ({review}) => {
+export const Review = ({review, className}) => {
     return (
-        <div>{review.text}</div>
+        <div className={className}
+        >{review.text}</div>
 
     );
 }

@@ -1,3 +1,4 @@
+import { Button } from '../button/component';
 
 
 const MIN_COUNT = 0;
@@ -8,9 +9,9 @@ export const Counter =({value, increment, decrement, min = MIN_COUNT, max = MAX_
   
    return (
         <div>
-            <button onClick={decrement} disabled ={value <= min}>-</button>
+            <Button onClick={decrement} disabled ={value <= min}>-</Button>
                {value} 
-            <button  onClick={increment} disabled = {value >= max}>+</button>
+            <Button  onClick={increment} disabled = {value >= max}>+</Button>
         </div>
     )
 } 

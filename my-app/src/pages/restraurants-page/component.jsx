@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { RestaurantNames } from '../../components/restaurantNames/component';
+import { RestaurantTabs} from '../../components/restaurantTabs/component';
 import { Restaurant } from '../../components/restaurant/component';
+import { Layout } from '../../components/layout/component';
 
 export const DEFAULT_RESTAURANT =  null;
 
@@ -21,9 +22,10 @@ export const RestaurantsPage = ({restaurants}) => {
         return null;
     }
     return (
-    <div>
+
+    <Layout>
         <div>
-            <RestaurantNames 
+            <RestaurantTabs 
                 restaurantNames={restaurantNames}
                 onRestaurantNameSelect = {
                     (restaurantName) => 
@@ -31,6 +33,6 @@ export const RestaurantsPage = ({restaurants}) => {
                     }/>
         </div>
          <Restaurant restaurant={foundRestaurant}/> 
-    </div>
+    </Layout>
     );
 }
