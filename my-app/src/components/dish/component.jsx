@@ -1,8 +1,12 @@
+import { useSelector } from 'react-redux';
 import {Counter} from "../counter/component";
 import { useState } from 'react';
+import { selectDishById } from '../../redux/features/enitites/dish/selector';
 
 const AMOUNT_STEP = 1;
-export const Dish = ({dish, className}) => {
+export const Dish = ({dishId, className}) => {
+
+  const dish = useSelector((state) => selectDishById(state, dishId))
 
   const [amount, setAmount] = useState(0);
 
@@ -13,7 +17,7 @@ export const Dish = ({dish, className}) => {
 
   return (
     <div className={className}>
-        <div>{dish}</div>
+        <div>{dish.name}</div>
       <div>
         <Counter 
           value = {amount}

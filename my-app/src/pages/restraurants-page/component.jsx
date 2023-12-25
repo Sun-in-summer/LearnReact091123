@@ -6,33 +6,23 @@ import { Layout } from '../../components/layout/component';
 export const DEFAULT_RESTAURANT =  null;
 
 
-export const RestaurantsPage = ({restaurants}) => {
-    const restaurantNames = restaurants.map((restaurant) => restaurant.name);
-    const [selectedRestaurantName, setSelectedRestaurantName] =useState();
+export const RestaurantsPage = () => {
+
+    const [selectedRestaurantId, setSelectedRestaurantId] =useState();
 
     
-    let foundRestaurant = restaurants.find((restaurant) => restaurant.name === selectedRestaurantName)  ;
-
-    if (!foundRestaurant ) {
-        foundRestaurant = DEFAULT_RESTAURANT;
-    }
-
-
-    if (!restaurants.length) {
-        return null;
-    }
     return (
 
     <Layout>
         <div>
             <RestaurantTabs 
-                restaurantNames={restaurantNames}
-                onRestaurantNameSelect = {
-                    (restaurantName) => 
-                        setSelectedRestaurantName(restaurantName)
+                onRestaurantSelect = {
+                    (restaurantId) => 
+                        {setSelectedRestaurantId(restaurantId);
+                        console.log(restaurantId)}
                     }/>
         </div>
-         <Restaurant restaurant={foundRestaurant}/> 
+         <Restaurant restaurantId = {selectedRestaurantId}/> 
     </Layout>
     );
 }
