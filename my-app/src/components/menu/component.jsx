@@ -1,13 +1,11 @@
 import classNames from 'classnames';
-import { Dish } from '../dish/component';
 import styles from './styles.module.css';
-import { selectDishesIdsByRestaurantId } from '../../redux/features/enitites/restraurant/selectors';
-import { useSelector } from 'react-redux';
+import { DishContainer } from '../dish/container';
 
-export const Menu = ({restaurantId, className}) => {
 
-    const dishesIds = useSelector((state) => selectDishesIdsByRestaurantId(state, restaurantId));
+export const Menu = ({dishesIds, className}) => {
 
+    
     
      return (
 
@@ -16,7 +14,7 @@ export const Menu = ({restaurantId, className}) => {
          <ul>
             { dishesIds.map((dishId) =>
                
-                  <Dish
+                  <DishContainer
                      dishId= {dishId} 
                      className={styles.dish}
                   />

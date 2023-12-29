@@ -1,26 +1,21 @@
-import { useSelector } from 'react-redux';
-import { Menu  } from '../menu/component';
+import { MenuContainer } from '../menu/container';
 import { OrderFormGroup } from '../order-form-group/component';
 import { ReviewForm } from '../review-form/component';
-import { Reviews } from '../reviews/component';
-import { selectRestaurantById } from '../../redux/features/enitites/restraurant/selectors';
+import { ReviewsContainer } from '../reviews/container';
 
-export const Restaurant = ({restaurantId}) => {
 
- 
+export const Restaurant = ({restaurant}) => {
 
-   const restaurant  = useSelector((state) => selectRestaurantById(state, restaurantId))
+  
 
    if(!restaurant){
     return null;
    }
     return (
     <div>
-      <h2>{restaurant.name}</h2>
-     
-      <Menu restaurantId = {restaurantId}/>
-      
-      <Reviews restaurantId ={restaurantId} />
+      <h2>{restaurant.name}</h2>  
+      <MenuContainer restaurantId = {restaurant.id}/>
+      <ReviewsContainer restaurantId ={restaurant.id} />
       <ReviewForm/>
       <OrderFormGroup />
     </div>

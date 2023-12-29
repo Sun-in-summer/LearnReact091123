@@ -5,15 +5,12 @@ import './styles/index.css';
 import store from './redux';
 
 
-export const App =({restaurants}) => {
+export const App =() => {
 return (
      <Provider store = {store}>
-        <RestaurantsPage restaurants={restaurants}/>
+        <RestaurantsPage />
     </Provider>    
 )
-
-
-
  }
 
  

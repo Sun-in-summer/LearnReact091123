@@ -1,12 +1,17 @@
-import { useSelector } from 'react-redux';
-import { selectReviewById } from '../../redux/features/enitites/review/selector';
+import { UserContainer } from '../user/container';
 
-export const Review = ({reviewId, className}) => {
+export const Review = ({review, className}) => {
 
-    const review = useSelector((state) =>selectReviewById(state, reviewId));
+    console.log(review);
+
+
+  
     return (
         <div className={className}
-        >{review.text}</div>
+        >{review.text}
+
+        <UserContainer userId = {review.userId} /> 
+        </div>
 
     );
 }
