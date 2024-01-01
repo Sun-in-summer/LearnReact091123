@@ -7,10 +7,15 @@ import { useEffect } from 'react';
 
 export const ReviewsContainer = ({restaurantId}) => {
 
-    const reviewIds  = useSelector((state) => selectReviewsByRestaurantId(state, restaurantId))
+  const dispatch = useDispatch();
+  
+  useEffect(() => dispatch(getReviews()), [dispatch]);
+  
+  const reviewIds  = useSelector((state) => selectReviewsByRestaurantId(state, restaurantId))
 
-    const dispatch = useDispatch();
-   
+   if (!reviewIds){
+    return null;
+   }
 
   
 

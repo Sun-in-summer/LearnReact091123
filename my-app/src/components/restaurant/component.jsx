@@ -15,7 +15,7 @@ export const Restaurant = ({restaurant}) => {
     <div>
       <h2>{restaurant.name}</h2>  
       <MenuContainer restaurantId = {restaurant.id}/>
-      <ReviewsContainer restaurantId ={restaurant.id} />
+      <ReviewsContainer restaurantId ={restaurant.id} /> 
       <ReviewForm/>
       <OrderFormGroup />
     </div>

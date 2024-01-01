@@ -6,7 +6,7 @@ import { Restaurants } from '../../components/restaurants/component';
 import { selectRestaurantsEntities } from '../../redux/features/enitites/restraurant/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRestaurants } from '../../redux/features/enitites/restraurant/thunks/get-restaurants';
-import { getReviews } from '../../redux/features/enitites/review/thunks/get-reviews';
+import { getUsers } from '../../redux/features/enitites/user/thunks/get-users';
 
 export const DEFAULT_RESTAURANT =  null;
 export const ALL_RESTAURANTS = "ALL"
@@ -23,6 +23,7 @@ export const RestaurantsPage = () => {
 
     useEffect(() => {
         dispatch(getRestaurants());
+        dispatch(getUsers());
     }, [dispatch]);
 
     
