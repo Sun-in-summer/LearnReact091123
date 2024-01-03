@@ -1,13 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { normalizedUsers } from '../../../../constants/normalized-mock';
+import { createSlice } from "@reduxjs/toolkit";
+import { getUsers } from "./thunks/get-users";
+import { REQUEST_STATUSES } from "../../../../constants/request-statuses";
 
 export const userSlice = createSlice({
-    name: 'userSlice',
-    initialState: {
-        entities: normalizedUsers.reduce((acc, user) => {
-            acc[user.id] = user;
-            return acc;
-        }, {}),
-        ids: normalizedUsers.map(({id})=> id),
-    }
+  name: "userSlice",
+  initialState: {
+    entities: {},
+    ids: [],
+    status: REQUEST_STATUSES.idle,
+  },
+  extraReducers: (builder) =>
+    builder
+      .addCase(getUsers.pending, (state) => {
+        state.status = REQUEST_STATUSES.pending;
+      })
+      .addCase(getUsers.fulfilled, (state, { payload }) => {
+        state.entities = payload.reduce((acc, user) => {
+          acc[user.id] = user;
+          return acc;
+        }, {});
+        state.ids = payload.map(({ id }) => id);
+        state.status = REQUEST_STATUSES.fulfilled;
+      })
+      .addCase(getUsers.rejected, (state) => {
+        state.status = REQUEST_STATUSES.rejected;
+      }),
 });

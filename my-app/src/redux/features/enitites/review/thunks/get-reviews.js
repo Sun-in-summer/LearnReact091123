@@ -1,4 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectReviewsByRestaurantId } from "../../restraurant/selectors";
+import { selectReviewIds } from "../selector";
 // import { selectReviewIds } from "../selector";
 
 export const getReviews = createAsyncThunk(
@@ -8,7 +10,6 @@ export const getReviews = createAsyncThunk(
       `http://localhost:3001/api/reviews?restaurantId=${restaurantId}`
     );
     const result = await response.json();
-    console.log("result1 in reviews", result);
     if (!result?.length) {
       return rejectWithValue("Empty reviews");
     }
@@ -16,7 +17,16 @@ export const getReviews = createAsyncThunk(
     return result;
   },
   {
-    // condition: (restaurantId, { getState }) =>
-    //   !selectReviewIds(getState(), restaurantId).length,
+    // condition: (restaurantId, { getState }) => {
+    //   const state = getState();
+    //   const restaurantReviewIds = selectReviewsByRestaurantId(
+    //     state,
+    //     restaurantId
+    //   );
+    //   console.log(restaurantReviewIds);
+    //   const reviewIds = selectReviewIds(state);
+    //   console.log(reviewIds);
+    //   return !restaurantReviewIds.every((id) => reviewIds.includes(id));
+    // },
   }
 );

@@ -5,7 +5,7 @@ import { REQUEST_STATUSES } from "../../../../constants/request-statuses";
 export const restaurantSlice = createSlice({
   name: "restaurantSlice",
   initialState: {
-    entities:  {},
+    entities: {},
     ids: [],
     status: REQUEST_STATUSES.idle,
   },
@@ -14,12 +14,12 @@ export const restaurantSlice = createSlice({
       .addCase(getRestaurants.pending, (state) => {
         state.status = REQUEST_STATUSES.pending;
       })
-      .addCase(getRestaurants.fulfilled, (state, {payload}) => {
+      .addCase(getRestaurants.fulfilled, (state, { payload }) => {
         state.entities = payload.reduce((acc, restaurant) => {
-        acc[restaurant.id] = restaurant;
-        return acc;
+          acc[restaurant.id] = restaurant;
+          return acc;
         }, {});
-        state.ids = payload.map(({ id }) => id)
+        state.ids = payload.map(({ id }) => id);
         state.status = REQUEST_STATUSES.fulfilled;
       })
       .addCase(getRestaurants.rejected, (state) => {

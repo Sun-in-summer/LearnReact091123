@@ -6,7 +6,7 @@ import { useOrder } from '../order/hooks';
 const DEFAULT_FORM_VALUE = {
     stret: '',
     house: '',
-    flat: null
+    flat: 0
 }
 
 const ACTION_TYPES  ={
